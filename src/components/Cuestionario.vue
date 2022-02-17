@@ -1,10 +1,12 @@
 <template>
   <div class="caja-de-preguntas">
     <v-card class="mx-auto" max-width="500">
-      <v-list>
+      <v-list dense>
         <h1> {{ preguntaActual.question }} </h1>
-        <v-list-item-group v-for="(respuesta, index) in respuestasAleatorias" :key="index" @click.prevent="seleccionarRespuesta(index)" :class="claseRespuesta(index)">
+        <v-list-item-group>
+            <v-list-item v-for="(respuesta, index) in respuestasAleatorias" :key="index" @click.prevent="seleccionarRespuesta(index)" :class="claseRespuesta(index)">
           {{respuesta}}
+            </v-list-item>
         </v-list-item-group>
       </v-list>
 
@@ -75,7 +77,7 @@ export default {
         if(!this.respondido && this.indexSeleccionado === index){
           claseRespuesta = 'seleccionada'
         } else if (this.respondido && this.correct_answer === index){
-          claseRespuesta = 'correcta'
+          claseRespuesta = 'correcto'
         }else if (this.respondido && this.indexSeleccionado === index && this.indexCorrecto !== index){
           claseRespuesta = 'incorrecto'
         }
@@ -86,11 +88,19 @@ export default {
 </script>
 
 <style scoped>
+  .mx-auto {
+    margin-bottom: 15 px;
+  }
+  
+  .btn {
+    margin: 0 5px;
+  }
+
   .seleccionada{
     background-color: lightblue;
   }
 
-  .correcta {
+  .correcto {
     background-color: green;
   }
 
