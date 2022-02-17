@@ -2,6 +2,7 @@
   <div class="caja-de-preguntas">
     <v-card class="mx-auto" max-width="500">
       <v-list>
+        <h1> {{ preguntaActual.question }} </h1>
         <v-list-item-group v-for="(respuesta, index) in respuestasAleatorias" :key="index" @click.prevent="seleccionarRespuesta(index)" :class="claseRespuesta(index)">
           {{respuesta}}
         </v-list-item-group>
@@ -48,7 +49,7 @@ export default {
             handler() {
                 this.indexSeleccionado = null
                 this.respondido = false
-                this.respuestasAleatorias()
+                this.randomizarRespuestas()
             }
         }
     },
@@ -64,7 +65,7 @@ export default {
           this.respondido = true
           this.incrementar(esCorrecto)
       },
-      respuestasAleatorias(){
+      randomizarRespuestas(){
         let respuestas = [...this.preguntaActual.incorrect_answers, this.preguntaActual.correct_answer]
         this.respuestasAleatorias = _.shuffle(respuestas)
         this.indexCorrecto = this.respuestasAleatorias.indexOf(this.preguntaActual.correct_answer)
