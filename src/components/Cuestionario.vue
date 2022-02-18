@@ -1,10 +1,10 @@
 <template>
   <div class="caja-de-preguntas">
     <v-card class="mx-auto" max-width="500">
-      <v-list dense>
+      <v-list>
         <h1> {{ preguntaActual.question }} </h1>
         <v-list-item-group>
-            <v-list-item v-for="(respuesta, index) in respuestasAleatorias" :key="index" @click.prevent="seleccionarRespuesta(index)" :class="claseRespuesta(index)">
+            <v-list-item v-for="(respuesta, index) in respuestasAleatorias" :key="index" @click.prevent="seleccionarRespuesta(index)" :class="categorizarRespuesta(index)">
           {{respuesta}}
             </v-list-item>
         </v-list-item-group>
@@ -14,7 +14,7 @@
       Responder
       </v-btn>
 
-      <v-btn depressed color="success" @click ="siguiente" :disabled="indexSeleccionado === null">
+      <v-btn depressed color="success" @click ="siguiente" :disabled="indexSeleccionado === null || noRespondido">
       Siguiente pregunta
       </v-btn>
 
@@ -28,14 +28,15 @@ export default {
     props: {
         preguntaActual: Object,
         siguiente: Function,
-        incrementar: Function
+        incrementar: Function,
     },
     data: function(){
         return{
             indexSeleccionado: null,
             indexCorrecto : null,
             respuestasAleatorias: [],
-            respondido: false
+            respondido: false,
+            noRespondido: true
         }
     },
     computed:{
@@ -51,6 +52,7 @@ export default {
             handler() {
                 this.indexSeleccionado = null
                 this.respondido = false
+                this.noRespondido = true
                 this.randomizarRespuestas()
             }
         }
@@ -65,6 +67,7 @@ export default {
           esCorrecto = true
         }
           this.respondido = true
+          this.noRespondido = false
           this.incrementar(esCorrecto)
       },
       randomizarRespuestas(){
@@ -72,7 +75,7 @@ export default {
         this.respuestasAleatorias = _.shuffle(respuestas)
         this.indexCorrecto = this.respuestasAleatorias.indexOf(this.preguntaActual.correct_answer)
       },
-      claseRespuesta(index){
+      categorizarRespuesta(index){
         let claseRespuesta = ''
         if(!this.respondido && this.indexSeleccionado === index){
           claseRespuesta = 'seleccionada'
