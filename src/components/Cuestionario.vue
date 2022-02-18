@@ -76,7 +76,7 @@ export default {
         let claseRespuesta = ''
         if(!this.respondido && this.indexSeleccionado === index){
           claseRespuesta = 'seleccionada'
-        } else if (this.respondido && this.correct_answer === index){
+        } else if (this.respondido && this.indexCorrecto === index){
           claseRespuesta = 'correcto'
         }else if (this.respondido && this.indexSeleccionado === index && this.indexCorrecto !== index){
           claseRespuesta = 'incorrecto'

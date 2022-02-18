@@ -4,17 +4,18 @@
       <Header
       :numCorrectas="numCorrectas"
       :numTotales="numTotales"/>
-     <v-container>
-      <v-row>
-        <v-col sm="6" offset="3">
+      <v-container>
+        <v-row>
+          <v-col sm="6" offset="3">
           <Cuestionario
             v-if="preguntas.length"
             :preguntaActual="preguntas[index]"
             :siguiente ="siguiente"
             :incrementar="incrementar"/>
-        </v-col>
-      </v-row>
-     </v-container>
+          </v-col>
+        </v-row>
+      </v-container>
+        <Footer/>
     </v-main>
   </v-app>
 </template>
@@ -22,6 +23,7 @@
 <script>
 import Header from './components/Header';
 import Cuestionario from './components/Cuestionario'
+import Footer from './components/Footer'
 
 export default {
   name: 'App',
@@ -29,6 +31,7 @@ export default {
   components: {
     Header,
     Cuestionario,
+    Footer
   },
 
   data() {
@@ -52,7 +55,7 @@ export default {
     },
 
   mounted: function(){
-    fetch('https://opentdb.com/api.php?amount=10&category=31&type=multiple',{
+    fetch('https://opentdb.com/api.php?amount=10&type=multiple',{
       method: 'get'
     })
     .then((response) => {
