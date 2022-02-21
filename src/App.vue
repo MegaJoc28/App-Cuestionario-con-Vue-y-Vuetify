@@ -8,10 +8,17 @@
         <v-row>
           <v-col sm="6" offset="3">
           <Cuestionario
-            v-if="preguntas.length"
+            v-if="preguntas.length && !mostrarSumario"
             :preguntaActual="preguntas[index]"
             :siguiente ="siguiente"
-            :incrementar="incrementar"/>
+            :incrementar="incrementar"
+            @submitPregunta ="submitPregunta"
+            :ultimaPregunta ="index===preguntas.length-1"
+            @terminar="terminar"/>
+          <Resultados
+          v-if="mostrarSumario"
+          :sumario="sumario"
+          />
           </v-col>
         </v-row>
       </v-container>
@@ -21,9 +28,10 @@
 </template>
 
 <script>
-import Header from './components/Header';
+import Header from './components/Header'
 import Cuestionario from './components/Cuestionario'
 import Footer from './components/Footer'
+import Resultados from './components/Resultados'
 
 export default {
   name: 'App',
@@ -31,7 +39,8 @@ export default {
   components: {
     Header,
     Cuestionario,
-    Footer
+    Footer,
+    Resultados
   },
 
   data() {
@@ -39,7 +48,9 @@ export default {
       preguntas: [],
       index: 0,
       numCorrectas: 0,
-      numTotales: 0
+      numTotales: 0,
+      sumario: [],
+      mostrarSumario: false
       }
     },
     methods: {
@@ -51,6 +62,12 @@ export default {
           this.numCorrectas++
         }
         this.numTotales++
+      },
+      submitPregunta(respuesta){
+        this.sumario.push(respuesta)
+      },
+      terminar(){
+        this.mostrarSumario = true
       }
     },
 
@@ -67,3 +84,11 @@ export default {
   }
 }
 </script>
+
+<style>
+#app {
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin-top: 60px;
+  text-align: center;
+}  
+</style>
