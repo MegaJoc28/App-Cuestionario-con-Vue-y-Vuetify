@@ -1,8 +1,5 @@
 <template>
-  <v-tabs>
-    <v-tab><b>Respuestas Correctas: {{ numCorrectas }}</b></v-tab>
-    <v-tab><b>Respuestas Totales: {{ numTotales }}</b></v-tab>
-  </v-tabs>
+  <p>Respuestas Correctas: {{ numCorrectas }} - Respuestas Totales: {{ numTotales }}</p>
 </template>
 
 <script>
