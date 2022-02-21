@@ -1,9 +1,12 @@
 <template>
   <div class="caja-de-preguntas">
     <v-card class="mx-auto" max-width="500">
-      <v-card-title>
-        {{ preguntaActual.question }}
-      </v-card-title>
+      <div class="card-header">
+        <v-card-title>
+          <b> {{ preguntaActual.question }} </b>
+        </v-card-title>
+        <hr>
+      </div>
       <v-list>
         <v-list-item-group>
           <v-list-item
@@ -128,10 +131,16 @@ export default {
 </script>
 
 <style scoped>
+.card-header{
+  text-align: center;
+  color: black;
+}
+
 .card-footer {
   text-align: center;
   display: flex;
-  justify-content: center;
+  width: 100%;
+  justify-content: space-around;
 }
 
 .seleccionada {
