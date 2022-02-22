@@ -3,9 +3,9 @@
     <template v-slot:default>
       <thead>
         <tr>
-          <th class="text-left">Número de pregunta</th>
-          <th class="text-left">Respuesta seleccionada</th>
-          <th class="text-left">Respuesta correcta</th>
+          <th class="text-left"><b>Número de pregunta</b></th>
+          <th class="text-left"><b>Respuesta seleccionada</b></th>
+          <th class="text-left"><b>Respuesta correcta</b></th>
         </tr>
       </thead>
       <tbody>
