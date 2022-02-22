@@ -36,7 +36,7 @@
               depressed
               color="success"
               @click="siguiente"
-              :disabled="indexSeleccionado === null || noRespondido"
+              :disabled="indexSeleccionado === null || !respondido"
             >
               Siguiente pregunta
             </v-btn>
@@ -63,7 +63,6 @@ export default {
       indexCorrecto: null,
       respuestasAleatorias: [],
       respondido: false,
-      noRespondido: true,
     };
   },
   computed: {
@@ -79,7 +78,6 @@ export default {
       handler() {
         this.indexSeleccionado = null;
         this.respondido = false;
-        this.noRespondido = true;
         this.randomizarRespuestas();
       },
     },
@@ -94,7 +92,6 @@ export default {
         esCorrecto = true;
       }
       this.respondido = true;
-      this.noRespondido = false;
       this.incrementar(esCorrecto);
       this.$emit("submitPregunta", {
         correct: this.respuestasAleatorias[this.indexCorrecto],

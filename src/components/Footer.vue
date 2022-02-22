@@ -6,7 +6,7 @@
 
         <v-spacer></v-spacer>
 
-        <v-btn v-for="icon in icons" :key="icon" :href="icon.link" target="_blank" class="mx-4" dark icon>
+        <v-btn v-for="(icon, index) in icons" :key="index" :href="icon.link" target="_blank" class="mx-4" dark icon>
             <v-icon size="24px">
             {{ icon.icon }}
             </v-icon>
