@@ -12,8 +12,8 @@
             :key="index"
             @click.prevent="seleccionarRespuesta(index)"
             :class="categorizarRespuesta(index)"
+            v-html="respuesta"
           >
-            {{ respuesta }}
           </v-list-item>
         </v-list-item-group>
       </v-list>
@@ -87,10 +87,7 @@ export default {
       this.indexSeleccionado = index;
     },
     submitRespuesta() {
-      let esCorrecto = false;
-      if (this.indexSeleccionado === this.indexCorrecto) {
-        esCorrecto = true;
-      }
+      const esCorrecto = this.indexSeleccionado === this.indexCorrecto;
       this.respondido = true;
       this.incrementar(esCorrecto);
       this.$emit("submitPregunta", {
