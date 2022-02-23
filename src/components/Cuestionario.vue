@@ -41,7 +41,9 @@
               Siguiente pregunta
             </v-btn>
           </template>
-          <v-btn v-else @click="$emit('terminar')"> Mostrar resultados </v-btn>
+          <v-btn depressed 
+          color="info"
+          v-else @click="$emit('terminar')"> Mostrar resultados </v-btn>
         </div>
       </v-card-actions>
     </v-card>

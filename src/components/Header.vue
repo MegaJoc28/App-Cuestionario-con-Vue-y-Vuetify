@@ -1,5 +1,5 @@
 <template>
-  <p>Respuestas Correctas: {{ numCorrectas }} - Respuestas Totales: {{ numTotales }}</p>
+  <p><b>Correctas: {{ numCorrectas }} - Respuestas Totales: {{ numTotales }}</b></p>
 </template>
 
 <script>
