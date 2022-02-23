@@ -2,9 +2,7 @@
   <div class="caja-de-preguntas">
     <v-card class="mx-auto" max-width="500">
       <div class="card-header">
-        <v-card-title>
-          <b> {{ preguntaActual.question }} </b>
-        </v-card-title>
+        <v-card-title style="word-break:normal; font-weight: bold" v-html="preguntaActual.question"></v-card-title>
         <hr>
       </div>
       <v-list>

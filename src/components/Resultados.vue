@@ -20,8 +20,8 @@
             "
           >
             <td class="text-left">{{ index + 1 }}</td>
-            <td class="text-left">{{ respuesta.selected }}</td>
-            <td class="text-left">{{ respuesta.correct }}</td>
+            <td class="text-left" v-html="respuesta.selected"></td>
+            <td class="text-left" v-html="respuesta.correct"></td>
           </tr>
         </tbody>
       </template>
@@ -43,10 +43,10 @@ export default {
 }
 
 .respuesta-correcta {
-  background-color: #c6f465;
+  background-color: #26e2a3;
 }
 
 .respuesta-incorrecta {
-  background-color: #ff6b6b;
+  background-color: #e97b7b;
 }
 </style>
